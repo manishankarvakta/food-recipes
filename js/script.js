@@ -1,12 +1,14 @@
 const loadMeals = () => {
     const searchName = document.getElementById("search-field");
     const name = searchName.value;
-    const url = `https://themealdb.com/api/json/v1/1/search.php?s=${name}`
+    const searchText = name !== '' ? name : 'fish';
+    const url = `https://themealdb.com/api/json/v1/1/search.php?s=${searchText}`
 
     fetch(url)
     .then(res => res.json())
     .then(data => displayMeal(data.meals))
 }
+
 
 const displayMeal = meals => {
     const mealWrapper = document.getElementById("meals");
@@ -69,3 +71,12 @@ const displayMeal = meals => {
     
 
 }
+
+const loadgMeals = () => {
+    const url = `https://themealdb.com/api/json/v1/1/search.php?s=fish`
+
+    fetch(url)
+    .then(res => res.json())
+    .then(data => displayMeal(data.meals))
+}
+loadgMeals();
